@@ -2,62 +2,39 @@
 
 using namespace std;
 
-const int MAX_ROWS = 100;
-const int MAX_COLS = 100;
+const int MAX_SIZE = 100;
 
 int main() {
 
     setlocale(LC_CTYPE, "ukr");
 
-    int a[MAX_ROWS][MAX_COLS];
-    int rows, cols, n, k;
+    int matrix[MAX_SIZE][MAX_SIZE];
+    int size;
 
-    cout << "Введiть кiлькiсть рядкiв у масивi a: ";
-    cin >> rows;
-    cout << "Введiть кiлькiсть стовбцiв у масивi a: ";
-    cin >> cols;
+    cout << "Введiть розмiр квадратної матрицi: ";
+    cin >> size;
 
-    cout << "Введiть елементи масиву a:" << '\n';
+    cout << "Введiть елементи матрицi:" << '\n';
+    for (int i = 0; i < size; ++i) {
 
-    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < size; ++j) {
 
-        for (int j = 0; j < cols; ++j) {
-
-            cin >> a[i][j];
+            cin >> matrix[i][j];
         }
     }
 
-    cout << "Введiть номер рядка для видалення (n): ";
-    cin >> n;
-    cout << "Введiть номер стовбця для видалення (k): ";
-    cin >> k;
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
 
-    if (n >= 0 && n < rows && k >= 0 && k < cols) {
+        sum += matrix[i][i]; 
 
-        cout << "Масив b з видаленим рядком " << n << " та стовбцем " << k << ":" << '\n';
-
-        for (int i = 0; i < rows; ++i) {
-
-            if (i != n) {
-
-                for (int j = 0; j < cols; ++j) {
-
-                    if (j != k) {
-
-                        cout << a[i][j] << " " << '\n';
-                    }
-                }
-                cout << '\n';
-            }
-        }
     }
 
-    else {
+    double average = static_cast<double>(sum) / size; 
 
-        cout << "Неправильно введенi значення n або k!" << '\n';
-    }
+    cout << "Середнє арифметичне елементiв головної дiагоналi: " << average << '\n';
 
     return 0;
-
 }
+
 
