@@ -2,37 +2,45 @@
 
 using namespace std;
 
-const int MAX_SIZE = 100;
+const int MAX_ROWS = 100;
+const int MAX_COLS = 100;
 
 int main() {
 
     setlocale(LC_CTYPE, "ukr");
 
-    int matrix[MAX_SIZE][MAX_SIZE];
-    int size;
+    int matrix[MAX_ROWS][MAX_COLS];
+    int rows, cols;
 
-    cout << "Введiть розмiр квадратної матрицi: ";
-    cin >> size;
+    cout << "Введiть кiлькiсть рядкiв у масивi: ";
+    cin >> rows;
+    cout << "Введiть кiлькiсть стовбцiв у масивi: ";
+    cin >> cols;
 
     cout << "Введiть елементи матрицi:" << '\n';
-    for (int i = 0; i < size; ++i) {
 
-        for (int j = 0; j < size; ++j) {
+    for (int i = 0; i < rows; ++i) {
+
+        for (int j = 0; j < cols; ++j) {
 
             cin >> matrix[i][j];
         }
     }
 
     int sum = 0;
-    for (int i = 0; i < size; ++i) {
 
-        sum += matrix[i][i]; 
+    for (int i = 0; i < rows; ++i) {
 
+        for (int j = 0; j < cols; ++j) {
+
+            if (i % 2 == 0 && j % 2 == 0) {
+
+                sum += matrix[i][j];
+            }
+        }
     }
 
-    double average = static_cast<double>(sum) / size; 
-
-    cout << "Середнє арифметичне елементiв головної дiагоналi: " << average << '\n';
+    cout << "Сума елементiв на парних позицiях: " << sum << '\n';
 
     return 0;
 }
